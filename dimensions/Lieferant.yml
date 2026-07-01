@@ -1,0 +1,45 @@
+unique_name: Lieferant
+object_type: dimension
+label: Lieferant
+hierarchies:
+  - unique_name: Lieferant Hierarchie
+    label: Lieferant Hierarchie
+    levels:
+      - unique_name: Lieferantennummer
+        secondary_attributes:
+          - unique_name: Lieferantenname
+            label: Lieferantenname
+            contains_unique_names: false
+            dataset: SUPPLIER
+            is_unique_key: false
+            key_columns:
+              - S_NAME
+            name_column: S_NAME
+            sort_column: S_NAME
+          - unique_name: Lieferant Telefonnummer
+            label: Lieferant Telefonnummer
+            contains_unique_names: false
+            dataset: SUPPLIER
+            is_unique_key: false
+            key_columns:
+              - S_PHONE
+            name_column: S_PHONE
+          - unique_name: Lieferant Kommentar
+            label: Lieferant Kommentar
+            contains_unique_names: false
+            dataset: SUPPLIER
+            is_unique_key: false
+            key_columns:
+              - S_COMMENT
+            name_column: S_COMMENT
+level_attributes:
+  - unique_name: Lieferantennummer
+    label: Lieferantennummer
+    contains_unique_names: false
+    dataset: SUPPLIER
+    is_unique_key: false
+    key_columns:
+      - S_SUPPKEY
+    name_column: S_SUPPKEY
+    sort_column: S_SUPPKEY
+type: standard

@@ -1,0 +1,52 @@
+unique_name: DATE_DYN
+object_type: dataset
+label: DATE_DYN
+columns:
+  - name: DATE
+    data_type: date
+  - name: WEEK
+    data_type: decimal(2,0)
+  - name: MONTH
+    data_type: decimal(2,0)
+  - name: QUARTER
+    data_type: decimal(2,0)
+  - name: YEAR
+    data_type: string
+  - name: YEARMONTH
+    data_type: string
+  - name: MONTH_NAME
+    data_type: string
+  - name: QUARTER_NAME
+    data_type: string
+  - name: WEEKDAY
+    data_type: decimal(2,0)
+  - name: WEEKDAY_NAME
+    data_type: string
+connection_id: con_SNOWFLAKE_SAMPLE_DATA_TPCH_SF1
+sql: |-
+  SELECT
+      d.date,
+      WEEK(d.date)                                    AS week,
+      MONTH(d.date)                                   AS month,
+      QUARTER(d.date)                                 AS quarter,
+      TO_CHAR(YEAR(d.date))                            AS year,
+      TO_CHAR(d.date, 'YYYYMM')                        AS yearmonth,
+      MONTHNAME(d.date)                               AS month_name,
+      'Q' || QUARTER(d.date)                           AS quarter_name,
+      DAYOFWEEKISO(d.date)                            AS weekday,
+      DAYNAME(d.date)                                 AS weekday_name
+  FROM (
+      SELECT DATEADD(day, seq.n, b.min_date) AS date
+      FROM (
+          SELECT
+              MIN(o_orderdate) AS min_date,
+              MAX(o_orderdate) AS max_date
+          FROM snowflake_sample_data.tpch_sf1.orders
+      ) b
+      JOIN (
+          SELECT ROW_NUMBER() OVER (ORDER BY SEQ4()) - 1 AS n
+          FROM TABLE(GENERATOR(ROWCOUNT => 100000))
+      ) seq
+        ON DATEADD(day, seq.n, b.min_date) <= b.max_date
+  ) d
+  ORDER BY d.date
