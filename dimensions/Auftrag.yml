@@ -32,6 +32,7 @@ relationships:
       join_columns:
         - O_ORDERDATE
       level: Auftragsnummer
+    role_play: Auftrag {0}
     to:
       dimension: Datum
       level: Datum

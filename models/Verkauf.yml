@@ -29,3 +29,12 @@ relationships:
     to:
       dimension: Auftrag
       level: Auftragsnummer
+  - unique_name: LINEITEM_L_SHIPDATE_to_Datum_Datum
+    from:
+      dataset: LINEITEM
+      join_columns:
+        - L_SHIPDATE
+    role_play: Versand {0}
+    to:
+      dimension: Datum
+      level: Datum
