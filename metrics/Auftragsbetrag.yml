@@ -4,4 +4,4 @@ label: Auftragsbetrag
 calculation_method: sum
 column: O_TOTALPRICE
 dataset: ORDERS
-unrelated_dimensions_handling: repeat
+unrelated_dimensions_handling: error

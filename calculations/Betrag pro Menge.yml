@@ -1,0 +1,4 @@
+unique_name: Betrag pro Menge
+object_type: metric_calc
+label: Betrag pro Menge
+expression: '[Measures].[Auftragsbetrag] / [Measures].[Menge]'

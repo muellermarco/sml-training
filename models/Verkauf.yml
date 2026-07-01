@@ -4,6 +4,7 @@ label: Verkauf
 metrics:
   - unique_name: Menge
   - unique_name: Auftragsbetrag
+  - unique_name: Betrag pro Menge
 relationships:
   - unique_name: LINEITEM_L_SUPPKEY_to_Lieferant_Lieferantennummer
     from:
