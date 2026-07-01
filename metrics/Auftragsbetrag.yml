@@ -1,7 +1,0 @@
-unique_name: Auftragsbetrag
-object_type: metric
-label: Auftragsbetrag
-calculation_method: sum
-column: O_TOTALPRICE
-dataset: ORDERS
-unrelated_dimensions_handling: repeat

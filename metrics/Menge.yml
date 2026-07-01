@@ -1,8 +1,0 @@
-unique_name: Menge
-object_type: metric
-label: Menge
-calculation_method: sum
-column: L_QUANTITY
-dataset: LINEITEM
-format: general number
-unrelated_dimensions_handling: error
